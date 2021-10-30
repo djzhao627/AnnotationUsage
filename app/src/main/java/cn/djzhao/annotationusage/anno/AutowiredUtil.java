@@ -26,7 +26,7 @@ public class AutowiredUtil {
                     if (declaredField.getType().isArray() && Parcelable.class.isAssignableFrom(componentType)) {
                         Object[] objects = (Object[]) value;
                         // 转为Parcelable[]数组
-                        value = Arrays.copyOf(objects, objects.length, Parcelable[].class);
+                        value = Arrays.copyOf(objects, objects.length, (Class<? extends Object[]>) declaredField.getType());
                     }
                     declaredField.setAccessible(true);
                     try {
